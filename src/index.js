@@ -5,36 +5,29 @@ const maxInt = 100;
 
 const getRandomInt = () => Math.floor(Math.random() * maxInt);
 
-const wrongAnswerShowText = (info) => {
-  console.log(`'${info.answerUser}' is wrong answer ;(. Correct answer was '${info.rightAnswer}'.`);
-  console.log(`Let's try again, '${info.userName}'!`);
+const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
+  console.log(`'${answerUser}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+  console.log(`Let's try again, '${userName}'!`);
 };
 
-const congratulatUser = (correctAnswers, userName) => {
+const congratulatUser = (userName, correctAnswers) => {
   if (correctAnswers === roundsGame) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
 
-const getUserAnswer = (question) => {
-  let countRightAnswers = question.correctAnswers;
-  console.log(`Question: ${question.randNum}`);
+const calculateUserQuestions = (userName, rightAnswer, correctAnswers) => {
+  let countRightAnswers = correctAnswers;
   const answerUser = readlinesync.question('Your answer:');
-  if (answerUser === question.rightAnswer) {
+  if (answerUser === rightAnswer) {
     console.log('Correct!');
     countRightAnswers += 1;
   } else {
-    const [rightAnswer, userName] = [question.rightAnswer, question.userName];
-    const info = {
-      answerUser,
-      rightAnswer,
-      userName,
-    };
-    wrongAnswerShowText(info);
+    wrongAnswerShowText(userName, rightAnswer, answerUser);
   }
   return [countRightAnswers, answerUser];
 };
 
 export {
-  getRandomInt, getUserAnswer, congratulatUser, roundsGame,
+  getRandomInt, calculateUserQuestions, congratulatUser, roundsGame,
 };

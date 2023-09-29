@@ -1,6 +1,6 @@
 import greetings from '../cli.js';
 import {
-  getRandomInt, getUserAnswer, congratulatUser, roundsGame,
+  getRandomInt, calculateUserQuestions, congratulatUser, roundsGame,
 } from '../index.js';
 
 const testEven = (randItem) => (randItem % 2 === 0 ? 'yes' : 'no');
@@ -15,16 +15,11 @@ const evenGame = () => {
   do {
     countRound += 1;
     const randNum = getRandomInt();
+    console.log(`Question: ${randNum}`);
     rightAnswer = testEven(randNum);
-    const question = {
-      rightAnswer,
-      userName,
-      correctAnswers,
-      randNum,
-    };
-    [correctAnswers, answerUser] = getUserAnswer(question);
+    [correctAnswers, answerUser] = calculateUserQuestions(userName, rightAnswer, correctAnswers);
   } while ((countRound < roundsGame) && (answerUser === rightAnswer));
-  congratulatUser(correctAnswers, userName);
+  congratulatUser(userName, correctAnswers);
 };
 
 export default evenGame;
