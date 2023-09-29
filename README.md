@@ -14,4 +14,7 @@
 # Games
 
 ## brain-even
-<a href="https://asciinema.org/connect/203dc32e-969a-4577-8f37-f3d1b213c4f5" target="_blank"><img src="https://asciinema.org/a/203dc32e-969a-4577-8f37-f3d1b213c4f5.svg"/></a>
+<a href="https://asciinema.org/a/JnxFVzREOddboHWQ17Sul07PL" target="_blank"><img src="https://asciinema.org/a/JnxFVzREOddboHWQ17Sul07PL.svg"/></a>
+
+## brain-calc
+<a href="https://asciinema.org/a/rH0G6tHPAByRhucP9M58Fl0ym" target="_blank"><img src="https://asciinema.org/a/rH0G6tHPAByRhucP9M58Fl0ym.svg"/></a>
