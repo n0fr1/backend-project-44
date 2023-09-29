@@ -11,4 +11,4 @@ lint:
 	npx eslint .
 
 prettier:
-	npx prettier --write bin/brain-even.js bin/brain-games.js src/cli.js
+	npx prettier --write bin/brain-even.js bin/brain-games.js src/cli.js src/common.js src/index.js
