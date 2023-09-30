@@ -6,10 +6,10 @@ const getRandomInt = () => {
   let rand = Math.random() * maxIntForGames;
   if (rand < 1) {
     do {
-      rand = Math.random() * maxIntForGames;
+      rand = Math.floor(rand);
     } while (rand < 1);
   }
-  return Math.floor(rand);
+  return rand * maxIntForGames;
 };
 
 const getEven = (randItem) => (randItem % 2 === 0 ? 'yes' : 'no');
