@@ -1,5 +1,5 @@
 const roundsGame = 3;
-const maxIntForGames = 10;
+const maxIntForGames = 100;
 const calcOperations = '+-*';
 
 const getRandomInt = () => {

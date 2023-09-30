@@ -8,6 +8,46 @@ import {
   roundsGame,
 } from './common.js';
 
+const rightAnswerEven = () => {
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  const randNum = getRandomInt();
+  console.log(`Question: ${randNum}`);
+  return getEven(randNum);
+};
+
+const rightAnswerCalc = () => {
+  console.log('What is the result of the expression?');
+  let randNum1 = getRandomInt();
+  let randNum2 = getRandomInt();
+  if (randNum1 < randNum2) {
+    do {
+      randNum1 = getRandomInt();
+      randNum2 = getRandomInt();
+    } while (randNum1 < randNum2);
+  }
+  const operation = getRandomOper();
+  console.log(`Question: ${randNum1} ${operation} ${randNum2}`);
+  return getCalc(randNum1, randNum2, operation);
+};
+
+const rightAnswerGcd = () => {
+  console.log('Find the greatest common divisor of given numbers');
+};
+
+const getRightAnswer = (gameName) => {
+  let rightAnswer;
+  if (gameName === 'Even') {
+    rightAnswer = rightAnswerEven();
+  }
+  if (gameName === 'Calc') {
+    rightAnswer = rightAnswerCalc();
+  }
+  if (gameName === 'Gcd') {
+    rightAnswer = rightAnswerGcd();
+  }
+  return rightAnswer;
+};
+
 const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
   console.log(
     `'${answerUser}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`,
@@ -31,39 +71,6 @@ const calculateUserQuestions = (userName, rightAnswer, correctAnswers) => {
     wrongAnswerShowText(userName, rightAnswer, answerUser);
   }
   return [countRightAnswers, answerUser];
-};
-
-const rightAnswerEven = () => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  const randNum = getRandomInt();
-  console.log(`Question: ${randNum}`);
-  return getEven(randNum);
-};
-
-const rightAnswerCalc = () => {
-  console.log('What is the result of the expression?');
-  let randNum1 = getRandomInt();
-  let randNum2 = getRandomInt();
-  if (randNum1 < randNum2) {
-    do {
-      randNum1 = getRandomInt();
-      randNum2 = getRandomInt();
-    } while (randNum1 < randNum2);
-  }
-  const operation = getRandomOper();
-  console.log(`Question: ${randNum1} ${operation} ${randNum2}`);
-  return getCalc(randNum1, randNum2, operation);
-};
-
-const getRightAnswer = (gameName) => {
-  let rightAnswer;
-  if (gameName === 'Even') {
-    rightAnswer = rightAnswerEven();
-  }
-  if (gameName === 'Calc') {
-    rightAnswer = rightAnswerCalc();
-  }
-  return rightAnswer;
 };
 
 const engineGames = (gameName) => {
