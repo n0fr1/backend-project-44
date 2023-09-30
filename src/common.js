@@ -2,7 +2,15 @@ const roundsGame = 3;
 const maxIntForGames = 10;
 const calcOperations = '+-*';
 
-const getRandomInt = () => Math.floor(Math.random() * maxIntForGames);
+const getRandomInt = () => {
+  let rand = Math.floor(Math.random());
+  if (rand === 0) {
+    do {
+      rand = Math.floor(Math.random());
+    } while (rand === 0);
+  }
+  return rand * maxIntForGames;
+};
 
 const getEven = (randItem) => (randItem % 2 === 0 ? 'yes' : 'no');
 

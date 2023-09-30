@@ -35,12 +35,7 @@ const calculateUserQuestions = (userName, rightAnswer, correctAnswers) => {
 
 const rightAnswerEven = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  let randNum = getRandomInt();
-  if (randNum === 0) {
-    do {
-      randNum = getRandomInt();
-    } while (randNum === 0);
-  }
+  const randNum = getRandomInt();
   console.log(`Question: ${randNum}`);
   return getEven(randNum);
 };
