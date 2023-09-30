@@ -33,33 +33,42 @@ const calculateUserQuestions = (userName, rightAnswer, correctAnswers) => {
   return [countRightAnswers, answerUser];
 };
 
+const rightAnswerEven = () => {
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  let randNum = getRandomInt();
+  if (randNum === 0) {
+    do {
+      randNum = getRandomInt();
+    } while (randNum === 0);
+  }
+  console.log(`Question: ${randNum}`);
+  return getEven(randNum);
+};
+
+const rightAnswerCalc = () => {
+  console.log('What is the result of the expression?');
+  let randNum1 = getRandomInt();
+  let randNum2 = getRandomInt();
+  if (randNum1 < randNum2) {
+    do {
+      randNum1 = getRandomInt();
+      randNum2 = getRandomInt();
+    } while (randNum1 < randNum2);
+  }
+  const operation = getRandomOper();
+  console.log(`Question: ${randNum1} ${operation} ${randNum2}`);
+  return getCalc(randNum1, randNum2, operation);
+};
+
 const getRightAnswer = (gameName) => {
+  let rightAnswer;
   if (gameName === 'Even') {
-    console.log('Answer "yes" if the number is even, otherwise answer "no".');
-    let randNum = getRandomInt();
-    if (randNum === 0) {
-      do {
-        randNum = getRandomInt();
-      } while (randNum === 0);
-    }
-    console.log(`Question: ${randNum}`);
-    return getEven(randNum);
+    rightAnswer = rightAnswerEven();
   }
   if (gameName === 'Calc') {
-    console.log('What is the result of the expression?');
-    let randNum1 = getRandomInt();
-    let randNum2 = getRandomInt();
-    if (randNum1 < randNum2) {
-      do {
-        randNum1 = getRandomInt();
-        randNum2 = getRandomInt();
-      } while (randNum1 < randNum2);
-    }
-    const operation = getRandomOper();
-    console.log(`Question: ${randNum1} ${operation} ${randNum2}`);
-    return getCalc(randNum1, randNum2, operation);
+    rightAnswer = rightAnswerCalc();
   }
-  return 1;
+  return rightAnswer;
 };
 
 const engineGames = (gameName) => {
