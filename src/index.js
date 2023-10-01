@@ -1,37 +1,48 @@
 import readlinesync from 'readline-sync';
 import greetings from './cli.js';
 import {
+  roundsGames,
+  maxIntEven,
+  maxIntCalc,
+  maxIntGcd,
+  calcOperations,
+} from './games-constants.js';
+import {
   getRandomInt,
   getEven,
   getRandomOper,
   getCalc,
-  roundsGame,
-} from './common.js';
+  getGcd,
+} from './games-calculations.js';
 
 const rightAnswerEven = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  const randNum = getRandomInt();
+  const randNum = getRandomInt(maxIntEven);
   console.log(`Question: ${randNum}`);
   return getEven(randNum);
 };
 
 const rightAnswerCalc = () => {
   console.log('What is the result of the expression?');
-  let randNum1 = getRandomInt();
-  let randNum2 = getRandomInt();
+  let randNum1 = getRandomInt(maxIntCalc);
+  let randNum2 = getRandomInt(maxIntCalc);
   if (randNum1 < randNum2) {
     do {
-      randNum1 = getRandomInt();
-      randNum2 = getRandomInt();
+      randNum1 = getRandomInt(maxIntCalc);
+      randNum2 = getRandomInt(maxIntCalc);
     } while (randNum1 < randNum2);
   }
-  const operation = getRandomOper();
+  const operation = getRandomOper(calcOperations);
   console.log(`Question: ${randNum1} ${operation} ${randNum2}`);
   return getCalc(randNum1, randNum2, operation);
 };
 
 const rightAnswerGcd = () => {
   console.log('Find the greatest common divisor of given numbers');
+  const randNum1 = getRandomInt(maxIntGcd);
+  const randNum2 = getRandomInt(maxIntGcd);
+  console.log(`Question: ${randNum1} ${randNum2}`);
+  return getGcd(randNum1, randNum2);
 };
 
 const getRightAnswer = (gameName) => {
@@ -56,7 +67,7 @@ const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
 };
 
 const congratulatUser = (userName, correctAnswers) => {
-  if (correctAnswers === roundsGame) {
+  if (correctAnswers === roundsGames) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
@@ -87,7 +98,7 @@ const engineGames = (gameName) => {
       rightAnswer,
       correctAnswers,
     );
-  } while (countRound < roundsGame && answerUser === rightAnswer);
+  } while (countRound < roundsGames && answerUser === rightAnswer);
   congratulatUser(userName, correctAnswers);
 };
 
