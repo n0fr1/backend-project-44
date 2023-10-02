@@ -11,7 +11,7 @@
 - brain-progression. Finding missing numbers in a sequence of numbers.
 - brain-prime. Determination of a prime number. 
 
-# Games
+# Rollers of the games
 
 ## brain-even
 <a href="https://asciinema.org/a/JnxFVzREOddboHWQ17Sul07PL" target="_blank"><img src="https://asciinema.org/a/JnxFVzREOddboHWQ17Sul07PL.svg"/></a>
