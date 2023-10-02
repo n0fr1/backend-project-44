@@ -5,6 +5,8 @@ import {
   maxIntEven,
   maxIntCalc,
   maxIntGcd,
+  maxIntProgression,
+  lengthProgression,
   calcOperations,
 } from './games-constants.js';
 import {
@@ -13,6 +15,7 @@ import {
   getRandomOper,
   getCalc,
   getGcd,
+  getProgression,
 } from './games-calculations.js';
 
 const rightAnswerEven = () => {
@@ -45,6 +48,15 @@ const rightAnswerGcd = () => {
   return getGcd(randNum1, randNum2);
 };
 
+const rightAnswerProgression = () => {
+  console.log('What number is missing in the progression?');
+  const randNum1 = getRandomInt(maxIntProgression);
+  const increment = getRandomInt(maxIntProgression);
+  const [progression, missedNum] = getProgression(randNum1, increment, lengthProgression);
+  console.log(`Question: ${progression}`);
+  return missedNum;
+};
+
 const getRightAnswer = (gameName) => {
   let rightAnswer;
   if (gameName === 'Even') {
@@ -56,7 +68,10 @@ const getRightAnswer = (gameName) => {
   if (gameName === 'Gcd') {
     rightAnswer = rightAnswerGcd();
   }
-  return rightAnswer;
+  if (gameName === 'Progression') {
+    rightAnswer = rightAnswerProgression();
+  }
+  return rightAnswer.toString();
 };
 
 const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {

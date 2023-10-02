@@ -30,7 +30,7 @@ const getCalc = (num1, num2, operation) => {
   if (operation === '-') {
     result = num1 - num2;
   }
-  return result.toString();
+  return result;
 };
 
 const gedDel = (num) => {
@@ -49,13 +49,32 @@ const gedDel = (num) => {
 const getGcd = (num1, num2) => {
   const [maxNum, minNum] = [Math.max(num1, num2), Math.min(num1, num2)];
   if (maxNum % minNum === 0) {
-    return minNum.toString();
+    return minNum;
   }
   const arrDel1 = gedDel(num1);
   const arrDel2 = gedDel(num2);
   const arrIntesec = _.intersection(arrDel1, arrDel2);
-  const nod = _.max(arrIntesec).toString();
+  const nod = _.max(arrIntesec);
   return nod;
+};
+
+const getProgression = (randNum1, increment, lengthProgression) => {
+  let strProgression = '';
+  const indMissed = getRandomInt(lengthProgression);
+  let counter = 1;
+  let el = randNum1;
+  let missedNum;
+  while (counter <= lengthProgression) {
+    if (counter !== indMissed) {
+      strProgression += ` ${el}`;
+    } else {
+      strProgression += ' ..';
+      missedNum = el;
+    }
+    counter += 1;
+    el += increment;
+  }
+  return [strProgression, missedNum];
 };
 
 export {
@@ -64,4 +83,5 @@ export {
   getRandomOper,
   getCalc,
   getGcd,
+  getProgression,
 };
