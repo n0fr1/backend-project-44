@@ -1,12 +1,63 @@
 import readlinesync from 'readline-sync';
 import greetings from './cli.js';
 import {
+  roundsGames,
+  maxIntEven,
+  maxIntCalc,
+  maxIntGcd,
+  calcOperations,
+} from './games-constants.js';
+import {
   getRandomInt,
   getEven,
   getRandomOper,
   getCalc,
-  roundsGame,
-} from './common.js';
+  getGcd,
+} from './games-calculations.js';
+
+const rightAnswerEven = () => {
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  const randNum = getRandomInt(maxIntEven);
+  console.log(`Question: ${randNum}`);
+  return getEven(randNum);
+};
+
+const rightAnswerCalc = () => {
+  console.log('What is the result of the expression?');
+  let randNum1 = getRandomInt(maxIntCalc);
+  let randNum2 = getRandomInt(maxIntCalc);
+  if (randNum1 < randNum2) {
+    do {
+      randNum1 = getRandomInt(maxIntCalc);
+      randNum2 = getRandomInt(maxIntCalc);
+    } while (randNum1 < randNum2);
+  }
+  const operation = getRandomOper(calcOperations);
+  console.log(`Question: ${randNum1} ${operation} ${randNum2}`);
+  return getCalc(randNum1, randNum2, operation);
+};
+
+const rightAnswerGcd = () => {
+  console.log('Find the greatest common divisor of given numbers');
+  const randNum1 = getRandomInt(maxIntGcd);
+  const randNum2 = getRandomInt(maxIntGcd);
+  console.log(`Question: ${randNum1} ${randNum2}`);
+  return getGcd(randNum1, randNum2);
+};
+
+const getRightAnswer = (gameName) => {
+  let rightAnswer;
+  if (gameName === 'Even') {
+    rightAnswer = rightAnswerEven();
+  }
+  if (gameName === 'Calc') {
+    rightAnswer = rightAnswerCalc();
+  }
+  if (gameName === 'Gcd') {
+    rightAnswer = rightAnswerGcd();
+  }
+  return rightAnswer;
+};
 
 const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
   console.log(
@@ -16,7 +67,7 @@ const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
 };
 
 const congratulatUser = (userName, correctAnswers) => {
-  if (correctAnswers === roundsGame) {
+  if (correctAnswers === roundsGames) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
@@ -33,39 +84,6 @@ const calculateUserQuestions = (userName, rightAnswer, correctAnswers) => {
   return [countRightAnswers, answerUser];
 };
 
-const rightAnswerEven = () => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  const randNum = getRandomInt();
-  console.log(`Question: ${randNum}`);
-  return getEven(randNum);
-};
-
-const rightAnswerCalc = () => {
-  console.log('What is the result of the expression?');
-  let randNum1 = getRandomInt();
-  let randNum2 = getRandomInt();
-  if (randNum1 < randNum2) {
-    do {
-      randNum1 = getRandomInt();
-      randNum2 = getRandomInt();
-    } while (randNum1 < randNum2);
-  }
-  const operation = getRandomOper();
-  console.log(`Question: ${randNum1} ${operation} ${randNum2}`);
-  return getCalc(randNum1, randNum2, operation);
-};
-
-const getRightAnswer = (gameName) => {
-  let rightAnswer;
-  if (gameName === 'Even') {
-    rightAnswer = rightAnswerEven();
-  }
-  if (gameName === 'Calc') {
-    rightAnswer = rightAnswerCalc();
-  }
-  return rightAnswer;
-};
-
 const engineGames = (gameName) => {
   const userName = greetings();
   let countRound = 0;
@@ -80,7 +98,7 @@ const engineGames = (gameName) => {
       rightAnswer,
       correctAnswers,
     );
-  } while (countRound < roundsGame && answerUser === rightAnswer);
+  } while (countRound < roundsGames && answerUser === rightAnswer);
   congratulatUser(userName, correctAnswers);
 };
 
