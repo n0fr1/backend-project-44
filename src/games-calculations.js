@@ -77,6 +77,10 @@ const getProgression = (randNum1, increment, lengthProgression) => {
   return [strProgression, missedNum];
 };
 
+const getPrime = (randNum) => {
+
+};
+
 export {
   getRandomInt,
   getEven,
@@ -84,4 +88,5 @@ export {
   getCalc,
   getGcd,
   getProgression,
+  getPrime,
 };
