@@ -78,7 +78,8 @@ const getProgression = (randNum1, increment, lengthProgression) => {
 };
 
 const getPrime = (randNum) => {
-
+  const arrDel = gedDel(randNum);
+  return (arrDel.length > 1) ? 'no' : 'yes';
 };
 
 export {
