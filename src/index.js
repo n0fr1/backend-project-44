@@ -20,13 +20,6 @@ import {
   getPrime,
 } from './games-calculations.js';
 
-const rightAnswerEven = () => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  const randNum = getRandomInt(maxIntEven);
-  console.log(`Question: ${randNum}`);
-  return getEven(randNum);
-};
-
 const rightAnswerCalc = () => {
   console.log('What is the result of the expression?');
   let randNum1 = getRandomInt(maxIntCalc);
@@ -59,18 +52,22 @@ const rightAnswerProgression = () => {
   return missedNum;
 };
 
-const rightAnswerPrime = () => {
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  const randNum = getRandomInt(maxIntPrime);
+const rightAnswerPrimeEven = (gameName) => {
+  let num;
+  if (gameName === 'Prime') {
+    console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+    num = maxIntPrime;
+  } else {
+    console.log('Answer "yes" if the number is even, otherwise answer "no".');
+    num = maxIntEven;
+  }
+  const randNum = getRandomInt(num);
   console.log(`Question: ${randNum}`);
-  return getPrime(randNum);
+  return (gameName === 'Prime') ? getPrime(randNum) : getEven(randNum);
 };
 
 const getRightAnswer = (gameName) => {
   let rightAnswer;
-  if (gameName === 'Even') {
-    rightAnswer = rightAnswerEven();
-  }
   if (gameName === 'Calc') {
     rightAnswer = rightAnswerCalc();
   }
@@ -80,8 +77,8 @@ const getRightAnswer = (gameName) => {
   if (gameName === 'Progression') {
     rightAnswer = rightAnswerProgression();
   }
-  if (gameName === 'Prime') {
-    rightAnswer = rightAnswerPrime();
+  if (gameName === 'Prime' || gameName === 'Even') {
+    rightAnswer = rightAnswerPrimeEven(gameName);
   }
   return rightAnswer.toString();
 };
