@@ -55,7 +55,7 @@ const rightAnswerProgression = () => {
   const randNum1 = getRandomInt(maxIntProgression);
   const increment = getRandomInt(maxIntProgression);
   const [progression, missedNum] = getProgression(randNum1, increment, lengthProgression);
-  console.log(`Question: ${progression}`);
+  console.log(`Question:${progression}`);
   return missedNum;
 };
 
