@@ -77,6 +77,11 @@ const getProgression = (randNum1, increment, lengthProgression) => {
   return [strProgression, missedNum];
 };
 
+const getPrime = (randNum) => {
+  const arrDel = gedDel(randNum);
+  return (arrDel.length > 1) ? 'no' : 'yes';
+};
+
 export {
   getRandomInt,
   getEven,
@@ -84,4 +89,5 @@ export {
   getCalc,
   getGcd,
   getProgression,
+  getPrime,
 };

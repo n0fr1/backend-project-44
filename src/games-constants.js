@@ -4,6 +4,7 @@ const maxIntCalc = 10;
 const maxIntGcd = 100;
 const maxIntProgression = 20;
 const lengthProgression = 10;
+const maxIntPrime = 100;
 const calcOperations = '+-*';
 
 export {
@@ -13,5 +14,6 @@ export {
   maxIntGcd,
   maxIntProgression,
   lengthProgression,
+  maxIntPrime,
   calcOperations,
 };

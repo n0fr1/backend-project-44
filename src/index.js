@@ -7,6 +7,7 @@ import {
   maxIntGcd,
   maxIntProgression,
   lengthProgression,
+  maxIntPrime,
   calcOperations,
 } from './games-constants.js';
 import {
@@ -16,6 +17,7 @@ import {
   getCalc,
   getGcd,
   getProgression,
+  getPrime,
 } from './games-calculations.js';
 
 const rightAnswerEven = () => {
@@ -57,6 +59,13 @@ const rightAnswerProgression = () => {
   return missedNum;
 };
 
+const rightAnswerPrime = () => {
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+  const randNum = getRandomInt(maxIntPrime);
+  console.log(`Question: ${randNum}`);
+  return getPrime(randNum);
+};
+
 const getRightAnswer = (gameName) => {
   let rightAnswer;
   if (gameName === 'Even') {
@@ -70,6 +79,9 @@ const getRightAnswer = (gameName) => {
   }
   if (gameName === 'Progression') {
     rightAnswer = rightAnswerProgression();
+  }
+  if (gameName === 'Prime') {
+    rightAnswer = rightAnswerPrime();
   }
   return rightAnswer.toString();
 };
