@@ -90,7 +90,7 @@ const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
   console.log(
     `'${answerUser}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`,
   );
-  console.log(`Let's try again, '${userName}'!`);
+  console.log(`Let's try again, ${userName}!`);
 };
 
 const congratulatUser = (userName, correctAnswers) => {
