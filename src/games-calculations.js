@@ -1,6 +1,8 @@
 import _ from 'lodash';
 
-const getRandomInt = (limitRandom) => {
+//  Представим, что я ничего не знаю о проекте brain-games и вижу твой код в первый раз. Я бы вообще не понял, что к чему относится)
+
+const getRandomInt = (limitRandom) => {  // Лучше функции, которые переиспользуются в нескольких играх, вынести в отдельный файл типа utils.js...
   let rand = Math.random() * limitRandom;
   if (rand < 1) {
     do {
@@ -10,8 +12,7 @@ const getRandomInt = (limitRandom) => {
   return Math.floor(rand);
 };
 
-const getEven = (randItem) => (randItem % 2 === 0 ? 'yes' : 'no');
-
+const getEven = (randItem) => (randItem % 2 === 0 ? 'yes' : 'no'); 
 const getRandomOper = (calcOperations) => {
   let result = '';
   const charactersLength = calcOperations.length;
@@ -19,7 +20,8 @@ const getRandomOper = (calcOperations) => {
   return result;
 };
 
-const getCalc = (num1, num2, operation) => {
+const getCalc = (num1, num2, operation) => { // ... а функции, которые применяются только в одной игре, отнести поближе к этой игре.
+
   let result = 0;
   if (operation === '+') {
     result = num1 + num2;
@@ -81,6 +83,14 @@ const getPrime = (randNum) => {
   const arrDel = gedDel(randNum);
   return (arrDel.length > 1) ? 'no' : 'yes';
 };
+
+/*
+ А еще можно делать так:
+
+ export const a = (...) => ...;
+ export const b = (...) => ...;
+ ...
+*/
 
 export {
   getRandomInt,
