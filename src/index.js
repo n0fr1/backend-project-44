@@ -1,5 +1,4 @@
-import readlinesync from 'readline-sync';
-import greetUser from './cli.js';
+import getUserAnswer from './answer.js';
 
 export const roundsGames = 3;
 
@@ -17,7 +16,9 @@ const congratulatUser = (userName, correctAnswers) => {
 };
 
 const startGame = (startCondition, questions, answers) => {
-  const userName = greetUser();
+  console.log('Welcome to the Brain Games!');
+  const userName = getUserAnswer('May I have your name?');
+  console.log(`Hello, ${userName}!`);
   let countRound = 0;
   let correctAnswers = 0;
   let answerUser;
@@ -26,7 +27,7 @@ const startGame = (startCondition, questions, answers) => {
     console.log(startCondition);
     console.log(questions[countRound]);
     rightAnswer = answers[countRound];
-    answerUser = readlinesync.question('Your answer:');
+    answerUser = getUserAnswer('Your answer:');
     if (answerUser === rightAnswer) {
       console.log('Correct!');
       correctAnswers += 1;
