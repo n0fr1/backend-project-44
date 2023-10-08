@@ -3,6 +3,7 @@ import { getRandomInt } from '../utils.js';
 
 const maxIntEven = 100;
 
+// Лучше, если функция для определения четности числа будет переиспользуемой утилитой и ничего не будет знать об ответах в какой-то игре.
 const getEven = (randItem) => (randItem % 2 === 0 ? 'yes' : 'no');
 
 const getRoundEven = () => {

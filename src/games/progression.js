@@ -4,6 +4,8 @@ import { getRandomInt } from '../utils.js';
 const maxIntProgression = 20;
 const lengthProgression = 10;
 
+// Функция называется getProgression, но на самом деле тут тоже смешано два не связанных действия: создание ряда и скрытие числа в нем.
+// Лучше для каждого из этих действий написать отдельную функцию.
 const getProgression = (randNum, increment) => {
   let strProgression = '';
   const indMissed = getRandomInt(lengthProgression);

@@ -4,6 +4,7 @@ import { getRandomInt, gedDel } from '../utils.js';
 
 const maxIntGcd = 100;
 
+// Попробоуй переписать эту функцию с использованием рекурсии и без lodash.
 const getGcd = (num1, num2) => {
   const [maxNum, minNum] = [Math.max(num1, num2), Math.min(num1, num2)];
   if (maxNum % minNum === 0) {

@@ -2,16 +2,20 @@ import startGame from '../index.js';
 import { getRandomInt } from '../utils.js';
 
 const maxIntCalc = 10;
+// Если нужно работать с набором каких-то примитивов, для этого лучше использовать массив.
 const calcOperations = '+-*';
 
 const getRandomOper = () => {
   let result = '';
   const charactersLength = calcOperations.length;
+  // Так у тебя уже есть утилита для генерации рандомного числа, используй ее)
   result = calcOperations.charAt(Math.floor(Math.random() * charactersLength));
   return result;
 };
 
 const getCalc = (num1, num2, operation) => {
+  // Для таких случаев есть специальная конструкция switch/case.
+  // И еще переменная result ничего не дает, можно сразу возвращать результат вычисления)
   let result = 0;
   if (operation === '+') {
     result = num1 + num2;
@@ -25,6 +29,7 @@ const getCalc = (num1, num2, operation) => {
   return result;
 };
 
+// А зачем вот это нужно? По-моему, не было такого требования, чтобы первое число обязательно было больше второго или равно ему)
 const getFirstNumGreaterSec = () => {
   let randNum1 = getRandomInt(maxIntCalc);
   let randNum2 = getRandomInt(maxIntCalc);
