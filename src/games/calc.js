@@ -1,4 +1,4 @@
-import { startGame, roundsGames } from '../index.js';
+import startGame from '../index.js';
 import { getRandomInt } from '../utils.js';
 
 const maxIntCalc = 10;
@@ -37,26 +37,17 @@ const getFirstNumGreaterSec = () => {
   return [randNum1, randNum2];
 };
 
-const getQuestionsAnswers = () => {
-  const questions = [];
-  const answers = [];
-  let counter = 0;
-  do {
-    counter += 1;
-    const [randNum1, randNum2] = getFirstNumGreaterSec();
-    const operation = getRandomOper();
-    const curQuestion = `Question: ${randNum1} ${operation} ${randNum2}`;
-    const curAnswer = getCalc(randNum1, randNum2, operation);
-    questions.push(curQuestion);
-    answers.push(curAnswer.toString());
-  } while (counter < roundsGames);
-  return [questions, answers];
+const getRoundCalc = () => {
+  const [randNum1, randNum2] = getFirstNumGreaterSec();
+  const operation = getRandomOper();
+  const curQuestion = `Question: ${randNum1} ${operation} ${randNum2}`;
+  const curAnswer = getCalc(randNum1, randNum2, operation);
+  return [curQuestion, curAnswer.toString()];
 };
 
 const calcGame = () => {
   const gameCondition = 'What is the result of the expression?';
-  const [arrQuestions, arrAnswers] = getQuestionsAnswers();
-  startGame(gameCondition, arrQuestions, arrAnswers);
+  startGame(gameCondition, getRoundCalc);
 };
 
 export default calcGame;

@@ -1,6 +1,6 @@
 import getUserAnswer from './answer.js';
 
-export const roundsGames = 3;
+const roundsGames = 3;
 
 const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
   console.log(
@@ -15,7 +15,20 @@ const congratulatUser = (userName, correctAnswers) => {
   }
 };
 
-const startGame = (startCondition, questions, answers) => {
+const getAnswersQuestions = (getRound) => {
+  const questions = [];
+  const answers = [];
+  let counter = 0;
+  do {
+    counter += 1;
+    const [curQuestion, curAnswer] = getRound();
+    questions.push(curQuestion);
+    answers.push(curAnswer);
+  } while (counter < roundsGames);
+  return [questions, answers];
+};
+
+const startGame = (startCondition, getRound) => {
   console.log('Welcome to the Brain Games!');
   const userName = getUserAnswer('May I have your name?');
   console.log(`Hello, ${userName}!`);
@@ -23,6 +36,7 @@ const startGame = (startCondition, questions, answers) => {
   let correctAnswers = 0;
   let answerUser;
   let rightAnswer;
+  const [questions, answers] = getAnswersQuestions(getRound);
   do {
     console.log(startCondition);
     console.log(questions[countRound]);
@@ -39,4 +53,4 @@ const startGame = (startCondition, questions, answers) => {
   congratulatUser(userName, correctAnswers);
 };
 
-export { startGame };
+export default startGame;
