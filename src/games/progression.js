@@ -32,7 +32,7 @@ const getQuestionsAnswers = () => {
     const randNum = getRandomInt(maxIntProgression);
     const increment = getRandomInt(maxIntProgression);
     const [progression, missedNum] = getProgression(randNum, increment);
-    const curQuestion = `Question: ${progression}`;
+    const curQuestion = `Question:${progression}`;
     const curAnswer = missedNum;
     questions.push(curQuestion);
     answers.push(curAnswer.toString());
