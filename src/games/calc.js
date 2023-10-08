@@ -25,22 +25,25 @@ const getCalc = (num1, num2, operation) => {
   return result;
 };
 
+const getFirstNumGreaterSec = () => {
+  let randNum1 = getRandomInt(maxIntCalc);
+  let randNum2 = getRandomInt(maxIntCalc);
+  if (randNum1 < randNum2) {
+    do {
+      randNum1 = getRandomInt(maxIntCalc);
+      randNum2 = getRandomInt(maxIntCalc);
+    } while (randNum1 < randNum2);
+  }
+  return [randNum1, randNum2];
+};
+
 const getQuestionsAnswers = () => {
   const questions = [];
   const answers = [];
   let counter = 0;
-  let randNum1;
-  let randNum2;
   do {
     counter += 1;
-    randNum1 = getRandomInt(maxIntCalc);
-    randNum2 = getRandomInt(maxIntCalc);
-    if (randNum1 < randNum2) {
-      do {
-        randNum1 = getRandomInt(maxIntCalc);
-        randNum2 = getRandomInt(maxIntCalc);
-      } while (randNum1 < randNum2);
-    }
+    const [randNum1, randNum2] = getFirstNumGreaterSec();
     const operation = getRandomOper();
     const curQuestion = `Question: ${randNum1} ${operation} ${randNum2}`;
     const curAnswer = getCalc(randNum1, randNum2, operation);
