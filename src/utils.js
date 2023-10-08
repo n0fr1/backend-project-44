@@ -1,3 +1,4 @@
+// Функцию для получения рандомного числа можно написать в одну строчку. Можешь, конечно, сам попробовать, но я бы просто нашел готовое решение на StackOverflow)
 const getRandomInt = (limitRandom) => {
   let rand = Math.random() * limitRandom;
   if (rand < 1) {

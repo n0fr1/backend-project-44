@@ -2,6 +2,8 @@ import getUserAnswer from './answer.js';
 
 const roundsGames = 3;
 
+// Вынесение пары строчек в отдельную функцию затрудняет читаемость кода, а ничего полезного не дает. Просто перенеси это прямо в движок)
+// То же относится к congratulatUser. И еще там опечатка в слове "congratulatE".
 const wrongAnswerShowText = (userName, rightAnswer, answerUser) => {
   console.log(
     `'${answerUser}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`,
@@ -15,6 +17,7 @@ const congratulatUser = (userName, correctAnswers) => {
   }
 };
 
+// А зачем создавать сразу по несколько пар "вопрос-ответ", если можно создавать по одной на каждой итерации цикла? Тогда эта функция вообще уходит)
 const getAnswersQuestions = (getRound) => {
   const questions = [];
   const answers = [];
