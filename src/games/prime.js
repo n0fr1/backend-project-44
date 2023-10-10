@@ -1,19 +1,25 @@
 import startGame from '../index.js';
-import { getRandomInt, gedDel } from '../utils.js';
+import { getRandomInt, getDivider } from '../utils.js';
 
 const maxIntPrime = 100;
+const minIntPrime = 1;
 
-// Чтобы определеить, простое число или нет, достаточно проверить, что оно не делится без остатка ни на одно число, которое меньше его половины.
-// Это логику можно описать прямо здесь. А логика в gedDel кажется неоправданно переусложненной)
-const getPrime = (randNum) => {
-  const arrDel = gedDel(randNum);
-  return (arrDel.length > 1) ? 'no' : 'yes';
+const getPrime = (num) => {
+  const maxDel = Math.floor(num / 2);
+  let i = 2;
+  while (i <= maxDel) {
+    if (getDivider(num, i)) {
+      return false;
+    }
+    i += 1;
+  }
+  return true;
 };
 
 const getRoundPrime = () => {
-  const randNum = getRandomInt(maxIntPrime);
+  const randNum = getRandomInt(maxIntPrime, minIntPrime);
   const curQuestion = `Question: ${randNum}`;
-  const curAnswer = getPrime(randNum);
+  const curAnswer = (getPrime(randNum)) ? 'yes' : 'no';
   return [curQuestion, curAnswer];
 };
 
