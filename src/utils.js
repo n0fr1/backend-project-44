@@ -1,25 +1,9 @@
-// Функцию для получения рандомного числа можно написать в одну строчку. Можешь, конечно, сам попробовать, но я бы просто нашел готовое решение на StackOverflow)
-const getRandomInt = (limitRandom) => {
-  let rand = Math.random() * limitRandom;
-  if (rand < 1) {
-    do {
-      rand = Math.random() * limitRandom;
-    } while (rand < 1);
-  }
-  return Math.floor(rand);
-};
+import readlinesync from 'readline-sync';
 
-const gedDel = (num) => {
-  const arr = [];
-  const maxDel = Math.floor(num / 2);
-  let i = 0;
-  while (i <= maxDel) {
-    i += 1;
-    if (num % i === 0) {
-      arr.push(i);
-    }
-  }
-  return arr;
-};
+const getRandomInt = (limitRandom, minNum) => (Math.floor(Math.random() * limitRandom) + minNum);
 
-export { gedDel, getRandomInt };
+const getDivider = (num, divider) => (num % divider === 0);
+
+const getUserAnswer = (userQuestion) => readlinesync.question(userQuestion);
+
+export { getRandomInt, getDivider, getUserAnswer };

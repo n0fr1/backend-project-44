@@ -1,15 +1,13 @@
 import startGame from '../index.js';
-import { getRandomInt } from '../utils.js';
+import { getRandomInt, getDivider } from '../utils.js';
 
 const maxIntEven = 100;
-
-// Лучше, если функция для определения четности числа будет переиспользуемой утилитой и ничего не будет знать об ответах в какой-то игре.
-const getEven = (randItem) => (randItem % 2 === 0 ? 'yes' : 'no');
+const minIntEven = 1;
 
 const getRoundEven = () => {
-  const randNum = getRandomInt(maxIntEven);
+  const randNum = getRandomInt(maxIntEven, minIntEven);
   const curQuestion = `Question: ${randNum}`;
-  const curAnswer = getEven(randNum);
+  const curAnswer = (getDivider(randNum, 2)) ? 'yes' : 'no';
   return [curQuestion, curAnswer];
 };
 

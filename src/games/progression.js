@@ -3,35 +3,37 @@ import { getRandomInt } from '../utils.js';
 
 const maxIntProgression = 20;
 const lengthProgression = 10;
+const minIntProgression = 1;
 
-// Функция называется getProgression, но на самом деле тут тоже смешано два не связанных действия: создание ряда и скрытие числа в нем.
-// Лучше для каждого из этих действий написать отдельную функцию.
 const getProgression = (randNum, increment) => {
-  let strProgression = '';
-  const indMissed = getRandomInt(lengthProgression);
+  const result = [];
   let counter = 1;
   let el = randNum;
-  let missedNum;
   while (counter <= lengthProgression) {
-    if (counter !== indMissed) {
-      strProgression += ` ${el}`;
-    } else {
-      strProgression += ' ..';
-      missedNum = el;
-    }
+    result.push(el);
     counter += 1;
     el += increment;
   }
-  return [strProgression, missedNum];
+  return result;
+};
+
+const hideNum = (arrProgression) => {
+  const arr = arrProgression;
+  const numIndHidden = getRandomInt(lengthProgression - 1, 0);
+  const numHidden = arr[numIndHidden];
+  arr[numIndHidden] = '..';
+  return [arr, numHidden];
 };
 
 const getRoundProgression = () => {
-  const randNum = getRandomInt(maxIntProgression);
-  const increment = getRandomInt(maxIntProgression);
-  const [progression, missedNum] = getProgression(randNum, increment);
-  const curQuestion = `Question:${progression}`;
-  const curAnswer = missedNum;
-  return [curQuestion, curAnswer.toString()];
+  const randNum = getRandomInt(maxIntProgression, minIntProgression);
+  const increment = getRandomInt(maxIntProgression, minIntProgression);
+  const arrProgression = getProgression(randNum, increment);
+  const [progression, numHidden] = hideNum(arrProgression);
+  const strProgression = progression.join(' ');
+  const curQuestion = `Question: ${strProgression}`;
+
+  return [curQuestion, numHidden.toString()];
 };
 
 const progressionGame = () => {

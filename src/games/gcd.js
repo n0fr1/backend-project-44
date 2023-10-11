@@ -1,25 +1,24 @@
-import _ from 'lodash';
 import startGame from '../index.js';
-import { getRandomInt, gedDel } from '../utils.js';
+import { getRandomInt } from '../utils.js';
 
 const maxIntGcd = 100;
+const minIntGcd = 1;
 
-// Попробоуй переписать эту функцию с использованием рекурсии и без lodash.
 const getGcd = (num1, num2) => {
-  const [maxNum, minNum] = [Math.max(num1, num2), Math.min(num1, num2)];
-  if (maxNum % minNum === 0) {
-    return minNum;
+  let x = num1;
+  let y = num2;
+  if (y === 0) {
+    return x;
   }
-  const arrDel1 = gedDel(num1);
-  const arrDel2 = gedDel(num2);
-  const arrIntesec = _.intersection(arrDel1, arrDel2);
-  const nod = _.max(arrIntesec);
-  return nod;
+  const buf = y;
+  y = x % y;
+  x = buf;
+  return getGcd(x, y);
 };
 
 const getRoundGcd = () => {
-  const randNum1 = getRandomInt(maxIntGcd);
-  const randNum2 = getRandomInt(maxIntGcd);
+  const randNum1 = getRandomInt(maxIntGcd, minIntGcd);
+  const randNum2 = getRandomInt(maxIntGcd, minIntGcd);
   const curQuestion = `Question: ${randNum1} ${randNum2}`;
   const curAnswer = getGcd(randNum1, randNum2);
   return [curQuestion, curAnswer.toString()];
