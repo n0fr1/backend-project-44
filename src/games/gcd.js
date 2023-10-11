@@ -4,6 +4,7 @@ import { getRandomInt } from '../utils.js';
 const maxIntGcd = 100;
 const minIntGcd = 1;
 
+// Это то что нужно, но можно еще убрать создание переменных и перекладывание значений из одной в другую. Это создает лишний "шум" в коде и ни на что не влияет.
 const getGcd = (num1, num2) => {
   let x = num1;
   let y = num2;
