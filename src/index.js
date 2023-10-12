@@ -1,10 +1,10 @@
-import { getUserAnswer } from './utils.js';
+import { getUserInput } from './utils.js';
 
 const roundsGames = 3;
 
 const startGame = (startCondition, getRound) => {
   console.log('Welcome to the Brain Games!');
-  const userName = getUserAnswer('May I have your name?');
+  const userName = getUserInput('May I have your name?');
   console.log(`Hello, ${userName}!`);
   let countRound = 0;
   let correctAnswers = 0;
@@ -15,7 +15,7 @@ const startGame = (startCondition, getRound) => {
     console.log(startCondition);
     [question, rightAnswer] = getRound();
     console.log(question);
-    answerUser = getUserAnswer('Your answer:');
+    answerUser = getUserInput('Your answer:');
     if (answerUser === rightAnswer) {
       console.log('Correct!');
       correctAnswers += 1;

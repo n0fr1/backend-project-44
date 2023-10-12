@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import { getRandomInt, getDivider } from '../utils.js';
+import { getRandomInt, isDivisible } from '../utils.js';
 
 const maxIntPrime = 100;
 const minIntPrime = 1;
@@ -8,7 +8,7 @@ const getPrime = (num) => {
   const maxDel = Math.floor(num / 2);
   let i = 2;
   while (i <= maxDel) {
-    if (getDivider(num, i)) {
+    if (isDivisible(num, i)) {
       return false;
     }
     i += 1;
