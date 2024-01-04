@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/n0fr1/backend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/n0fr1/backend-project-44/actions)",
   "main": "index.js",
@@ -18,7 +18,6 @@
     "brain-prime": "bin/brain-prime.js"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
