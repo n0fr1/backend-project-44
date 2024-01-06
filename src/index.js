@@ -6,27 +6,23 @@ const startGame = (startCondition, getRound) => {
   console.log('Welcome to the Brain Games!');
   const userName = getUserInput('May I have your name?');
   console.log(`Hello, ${userName}!`);
-  let countRound = 0;
+
   let correctAnswers = 0;
-  let answerUser;
-  let rightAnswer;
-  let question;
-  do {
+  for (let round = 1; round <= roundsGames; round += 1) {
     console.log(startCondition);
-    [question, rightAnswer] = getRound();
+    const [question, rightAnswer] = getRound();
     console.log(question);
-    answerUser = getUserInput('Your answer:');
-    if (answerUser === rightAnswer) {
-      console.log('Correct!');
-      correctAnswers += 1;
-    } else {
+    const answerUser = getUserInput('Your answer:');
+    if (answerUser !== rightAnswer) {
       console.log(
         `'${answerUser}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`,
       );
       console.log(`Let's try again, ${userName}!`);
+      return;
     }
-    countRound += 1;
-  } while (countRound < roundsGames && answerUser === rightAnswer);
+    correctAnswers += 1;
+    console.log('Correct!');
+  }
   if (correctAnswers === roundsGames) {
     console.log(`Congratulations, ${userName}!`);
   }

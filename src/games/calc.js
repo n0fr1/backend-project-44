@@ -21,7 +21,6 @@ const getCalc = (num1, num2, operation) => {
 const getRoundCalc = () => {
   let randNum1 = getRandomInt(maxIntCalc, minIntCalc);
   let randNum2 = getRandomInt(maxIntCalc, minIntCalc);
-  console.log(randNum1, randNum2, Math.min(randNum1, randNum2));
   [randNum1, randNum2] = [Math.max(randNum1, randNum2), Math.min(randNum1, randNum2)];
   const calcOperationsLength = calcOperations.length;
   const operation = calcOperations[getRandomInt(calcOperationsLength, minIntCalc)];
